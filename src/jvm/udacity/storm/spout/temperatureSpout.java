@@ -26,11 +26,13 @@ import java.util.Set;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import java.util.ArrayList;
+
 
 public class temperatureSpout extends BaseRichSpout {
 
 	private SpoutOutputCollector outputCollector; 
-
+	private ArrayList<String> temperatures = new ArrayList<String>(); ; 
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer){
 		declarer.declare(new Fields("value"));
@@ -38,7 +40,7 @@ public class temperatureSpout extends BaseRichSpout {
 
 	@Override
 	public void open(Map configMap, TopologyContext context,SpoutOutputCollector outputCollector)
-	{
+	{	int i = 0 ; 
 		this.outputCollector = outputCollector;
 		DBCursor myDoc = null;
     	try
@@ -52,10 +54,12 @@ public class temperatureSpout extends BaseRichSpout {
      		myDoc = coll.find(query1,query);
 		   	while(myDoc.hasNext()) 
 		   	{
-       			System.out.println("**************************  " +  myDoc.next());
+		   		
+       			//System.out.println("**************************  " +  myDoc.next());
+       			temperatures.add(myDoc.next().toString());
+       			System.out.println("**************************  " + temperatures.get(i));
+       			i++ ; 
   			}
-     		//DBObject myDoc = coll.find(query1,query);
-    		//System.out.println("**************************  " +  myDoc);
 		}
 		catch(Exception e)
 		{
@@ -70,6 +74,9 @@ public class temperatureSpout extends BaseRichSpout {
 	@Override
 	public void nextTuple()
 	{
-		// to complete
+		for (String temperature : temperatures)
+		{
+			outputCollector.emit(new Values(temperature));
+		}
 	}
 }

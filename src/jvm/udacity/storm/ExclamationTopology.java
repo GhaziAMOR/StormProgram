@@ -74,7 +74,7 @@ public class ExclamationTopology {
     DBCollection coll = db.getCollection("testCollection");
     DBObject myDoc = coll.findOne();*/
     
-      // build the word with the exclamation marks appended
+      // build the word with the exclamation marks  appended
       StringBuilder exclamatedWord = new StringBuilder();
       exclamatedWord.append(word).append("!!!");
       //exclamatedWord.append(word).append(myDoc);

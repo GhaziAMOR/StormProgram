@@ -157,7 +157,7 @@ public class ReporterExclamationTopology {
     // attach the word spout to the topology - parallelism of 10
     //builder.setSpout("word", new TestWordSpout(), 10);
    // builder.setSpout("rand-sentence", new RandomSentenceSpout(), 10);
-   builder.setSpout("rand-sentence", new temperatureSpout(), 10);
+    builder.setSpout("rand-sentence", new temperatureSpout(), 10);
 
     // attach the exclamation bolt to the topology - parallelism of 3
     //builder.setBolt("exclaim1", new ExclamationBolt(), 3).shuffleGrouping("word");
