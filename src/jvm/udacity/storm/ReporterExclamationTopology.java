@@ -129,26 +129,7 @@ public class ReporterExclamationTopology {
 
   public static void main(String[] args) throws Exception
   {
-/*DBCursor myDoc = null;
-     try{
-    MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
-    DB db = mongoClient.getDB( "local" );
-    
-     DBCollection coll = db.getCollection("testCollection");
-     BasicDBObject query1 = new BasicDBObject();
-     BasicDBObject query = new BasicDBObject("_id",0);
-  
-     myDoc = coll.find(query1,query);
 
-   while(myDoc.hasNext()) {
-       System.out.println("**************************  " +  myDoc.next());
-   }
-     //DBObject myDoc = coll.find(query1,query);
-    //System.out.println("**************************  " +  myDoc);
-
-} finally {
-   myDoc.close();
-}*/
     // create the topology
     TopologyBuilder builder = new TopologyBuilder();
 
