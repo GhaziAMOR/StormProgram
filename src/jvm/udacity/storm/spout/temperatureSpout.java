@@ -38,10 +38,9 @@ public class temperatureSpout extends BaseRichSpout {
 		declarer.declare(new Fields("value"));
 	}
 
-	@Override
-	public void open(Map configMap, TopologyContext context,SpoutOutputCollector outputCollector)
-	{	int i = 0 ; 
-		this.outputCollector = outputCollector;
+	public ArrayList getTemperaturesFromDB() 
+	{	
+		int i = 0 ;
 		DBCursor myDoc = null;
     	try
     	{
@@ -60,15 +59,25 @@ public class temperatureSpout extends BaseRichSpout {
        			System.out.println("**************************  " + temperatures.get(i));
        			i++ ; 
   			}
+		   	return(temperatures);
 		}
 		catch(Exception e)
 		{
-
+			
 		}
 		finally 
 		{
    			myDoc.close();
 		}
+
+		return(null);
+	}
+	
+	@Override
+	public void open(Map configMap, TopologyContext context,SpoutOutputCollector outputCollector)
+	{	 
+		this.outputCollector = outputCollector;
+		temperatures = getTemperaturesFromDB();		
 	}
 
 	@Override
