@@ -1,4 +1,5 @@
 /vagrant/lesson1/testStage/src/jvm/udacity/storm/ReporterExclamationTopology.java
+/vagrant/lesson1/testStage/src/jvm/udacity/storm/ExtractBolt.java
 /vagrant/lesson1/testStage/src/jvm/udacity/storm/ExclamationTopology.java
 /vagrant/lesson1/testStage/src/jvm/udacity/storm/spout/temperatureSpout.java
 /vagrant/lesson1/testStage/src/jvm/udacity/storm/spout/RandomSentenceSpout.java

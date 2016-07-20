@@ -55,9 +55,7 @@ public class temperatureSpout extends BaseRichSpout {
 		   	{
 		   		
        			//System.out.println("**************************  " +  myDoc.next());
-       			temperatures.add(myDoc.next().toString());
-       			System.out.println("**************************  " + temperatures.get(i));
-       			i++ ; 
+       			temperatures.add(myDoc.next().toString()); 
   			}
 		   	return(temperatures);
 		}
