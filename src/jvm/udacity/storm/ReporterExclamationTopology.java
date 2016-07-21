@@ -146,8 +146,9 @@ public class ReporterExclamationTopology {
 
     // attach another exclamation bolt to the topology - parallelism of 2
     //builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
-    builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("rand-sentence");
-
+    //builder.setBolt("exclaim2", new MeanTemperatureBolt(), 2).shuffleGrouping("exclaim1");
+  //  builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("rand-sentence");
+   builder.setBolt("exclaim2", new MeanTemperatureBolt(), 1).globalGrouping("exclaim1");
     //********* END stage2 exercise part 2-of-2 ***********
 
     // create the default config object

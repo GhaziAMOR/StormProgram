@@ -33,6 +33,7 @@ public class temperatureSpout extends BaseRichSpout {
 
 	private SpoutOutputCollector outputCollector; 
 	private ArrayList<String> temperatures = new ArrayList<String>(); ; 
+	
 	@Override
 	public void declareOutputFields(OutputFieldsDeclarer declarer){
 		declarer.declare(new Fields("value"));
