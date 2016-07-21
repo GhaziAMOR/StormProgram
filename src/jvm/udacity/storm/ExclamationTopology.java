@@ -55,15 +55,9 @@ public class ExclamationTopology {
     {
       // get the column word from tuple
       String word = tuple.getString(0);
-/*MongoClient mongoClient = new MongoClient( "localhost" , 27017 );
-    DB db = mongoClient.getDB( "local" );
-    DBCollection coll = db.getCollection("testCollection");
-    DBObject myDoc = coll.findOne();*/
-    
       // build the word with the exclamation marks  appended
       StringBuilder exclamatedWord = new StringBuilder();
       exclamatedWord.append(word).append("!!!");
-      //exclamatedWord.append(word).append(myDoc);
 
       // emit the word with exclamations
       _collector.emit(tuple, new Values(exclamatedWord.toString()));
@@ -93,8 +87,8 @@ public class ExclamationTopology {
     builder.setBolt("exclaim1", new ExclamationBolt(), 3).shuffleGrouping("word");
 
     // attach another exclamation bolt to the topology - parallelism of 2
-    builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
-
+   builder.setBolt("exclaim2", new ExclamationBolt(), 2).shuffleGrouping("exclaim1");
+    //builder.setBolt("exclaim2", new MeanTemperatureBolt(), 1).globalGrouping("exclaim1");
     // create the default config object
     Config conf = new Config();
 
